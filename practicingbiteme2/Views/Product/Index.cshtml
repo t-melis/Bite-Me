@@ -1,0 +1,74 @@
+﻿@*@model IEnumerable<practicingbiteme2.Models.Product>*@
+
+@model PagedList.IPagedList<practicingbiteme2.Models.Product>
+
+@using PagedList.Mvc;
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p id="searchProduct">
+        Find: @Html.TextBox("searchString")
+        Category: @Html.DropDownList("category", "All")
+        <button class="btn btn-primary" type="submit">Search</button>
+    </p>
+}
+
+<p>
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+</p>
+
+<div>
+    @foreach (var item in Model)
+    {
+
+        <div class="dl-horizontal">
+            <div class="item col-sm-4">
+                <img class="ProductImage img-responsive" src="@Html.DisplayFor(model => item.ImageURL)" style="width:100%">
+                <div class="middle">
+                    <div>
+                        <p class="NameInImage">@Html.DisplayFor(model => item.Name)</p>
+                        <p class="DescriptionInImage">@Html.DisplayFor(model => item.Description)</p>
+                        <p class="PriceInImage">@Html.DisplayFor(model => item.Price)</p>
+                        <p class="CategoryInImage">Category: @Html.DisplayFor(model => item.Category)</p>
+                    </div>
+                    <div class="TextInBox">@Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { productId = item.ProductID }, null)</div><br />
+                    <div>
+                        @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) @:|
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                        }
+                        <div class="TextInBox">@Html.ActionLink("Add to Wishlist", "AddToWishlist", "Wishlist", new { productID = item.ProductID }, null) |</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+<br />
+
+<div class="fixer"></div>
+
+<div>
+    <div class="page">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+
+
+<div class="fixer"></div>
+<div class="fixer"></div>

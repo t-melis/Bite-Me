@@ -1,0 +1,52 @@
+﻿@model practicingbiteme2.Models.Wishlist
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>My Wishlist</h2>
+
+@if (Model == null || !Model.Products.Any())
+{
+    <div>Your wishlist is empty.</div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.ActionLink("Remove Item", "RemoveFromWishlist", "Wishlist", new { productID = item.ProductID }, null) |
+                    @Html.ActionLink("Send to Cart", "SendToCart", "Wishlist", new { productId = item.ProductID }, null)
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to Products", "Index", "Product") |
+    @Html.ActionLink("View Cart", "Index", "Cart")
+</div>
+

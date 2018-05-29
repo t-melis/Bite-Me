@@ -1,0 +1,77 @@
+﻿@model practicingbiteme2.Models.Cart
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>My Cart</h2>
+
+<img class="cart-image" src="/Photos/cart.png" width="70" height="70" />
+
+@if (Model == null || !Model.CartProducts.Any())
+{
+    <div>Your cart is empty.</div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.CartProducts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Description)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Category)
+                </td>
+                <td>
+                    @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input name="productId" value="@item.ProductID" type="hidden" />
+                        <input name="quantity" type="number" min="1" value="@item.Quantity" />
+                        <button type="submit">Update</button>
+                    }
+                </td>
+                <td>
+                    @(item.Product.Price * item.Quantity)
+                </td>
+                <td>
+                    @Html.ActionLink("Remove Item", "RemoveFromCart", "Cart", new { productID = item.ProductID }, null) |
+                    @Html.ActionLink("Save For Later", "SendToWishlist", "Cart", new { productId = item.ProductID }, null)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td><strong>Total</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>@ViewBag.Total</strong></td>
+            <td></td>
+        </tr>
+    </table>
+    <div>
+        @Html.ActionLink("Empty Cart", "EmptyCart", "Cart") |
+        @Html.ActionLink("Order", "ConfirmOrder", "Cart")
+    </div>
+
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to Products", "Index", "Product") |
+    @Html.ActionLink("View Wishlist", "Index", "Wishlist")
+</div>

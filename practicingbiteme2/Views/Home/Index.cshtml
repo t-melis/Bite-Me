@@ -1,0 +1,183 @@
+﻿@{
+	ViewBag.Title = "Home";
+}
+
+@*<img id="HomePageImage" src="/Photos/chocolateBrownie.jpg" width="850" height="450" align="right" />
+	<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+	<style>
+		#HomePageImage {
+			margin-right: -800px;
+			margin-top: 160px;
+			position:relative;
+		}
+	</style>
+
+	<p id="p">
+		BiteMe is a manufacturing startup bakery e-shop, specialized in pastry products, cakes and cookies
+	</p>
+
+	@section scripts
+	{
+		<script>
+			$("#HomePageImage").animate({
+				'left': '-=600px',
+			}, { duration: 100000 });
+
+			$("#HomePageImage").fadeOut(3000);
+		</script>
+	}*@
+<head>
+	<link rel="stylesheet" type="text/css" href="/Content/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="/Content/square-loader.min.css" />
+	<link rel="stylesheet" type="text/css" href="/Content/demo.css" />
+	<link rel="stylesheet" type="text/css" href="/Content/component.css" />
+	<script>
+		document.documentElement.className = 'js';
+	</script>
+</head>
+
+
+<body>
+<div class="view">
+@*<header class="header">
+	<div class="codrops-links">
+		<a class="codrops-icon codrops-icon--prev" href="http://tympanus.net/Development/ElasticCircleSlideshow/" title="Previous Demo"><span>Previous Demo</span></a>
+		<a class="codrops-icon codrops-icon--drop" href="http://tympanus.net/codrops/?p=26096" title="Back to the article"><span>Back to the Codrops article</span></a>
+	</div>
+	<nav class="demos">
+		<a class="demos__item demos__item--current" href="index.html">Default</a>
+		<a class="demos__item" href="index2.html">Spring</a>
+	</nav>
+</header>*@
+<section class="page page--mover">
+	<div class="la-square-loader"><div></div></div>
+</section>
+<div class="title-wrap">
+	<h1 class="title title--main"></h1>
+	@*<p class="title title--sub">Smart Auto-Filtering for your shots.</p>*@
+</div>
+<section class="page page--static">
+@*<div class="page__title">
+	<h2 class="page__title-main">Polaroid Stack to Grid Intro Animation</h2>
+	<p class="page__title-sub">Recreating the effect seen on the <a href="http://www.takeitapp.co/en">takeit</a> website</p>
+</div>*@</section>
+<section class="page page--static">
+	@*<div class="page__title">
+						<h2 class="page__title-main">Polaroid Stack to Grid Intro Animation</h2>
+						<p class="page__title-sub">Recreating the effect seen on the <a href="http://www.takeitapp.co/en">takeit</a> website</p>
+					</div>*@
+	<ul class="grid">
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="/Photos/Products/Cakes/JapaneseCottonCheesecake.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Natural saturation effects</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="/Photos/Products/Cakes/PistachioTart.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Auto-color and light</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="/Photos/Products/Cakes/Valentine.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">That special blur</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="/Photos/Products/Cookies/Black&WhiteQuinoaLaceCookies.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Drama where you need it</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="/Photos/Products/Cookies/LevanderAlmondCookies.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Realistic depth</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="img/photos/6.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">The common, but special</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="img/photos/7.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Natural saturation effects</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="img/photos/8.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">That special blur</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="img/photos/9.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Auto-color and light</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="img/photos/1.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Natural saturation effects</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="img/photos/2.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">Auto-color and light</h3>
+			</a>
+		</li>
+		<li class="grid__item">
+			<a class="grid__link" href="#">
+				<img class="grid__img" src="img/photos/3.jpg" alt="Some image"/>
+				<h3 class="grid__item-title">That special blur</h3>
+			</a>
+		</li>
+	</ul>
+	<button class="button button--load" aria-label="Load more images">
+		<svg class="polaroid" width="100%" height="100%" viewBox="0 0 220 243" preserveAspectRatio="xMidYMid meet">
+			<rect class="polaroid__base" x="0" y="0" width="220" height="243" rx="5"></rect>
+			<rect class="polaroid__inner" x="16" y="20" width="189" height="149"></rect>
+			<g class="polaroid__loader">
+				<circle cx="61.5" cy="94.5" r="17.5"></circle>
+				<circle cx="110.5" cy="94.5" r="17.5"></circle>
+				<circle cx="159.5" cy="94.5" r="17.5"></circle>
+			</g>
+		</svg>
+		<span class="button__text">Load more</span>
+	</button>
+</section>
+<div class="device">
+	<div class="device__screen"></div>
+</div>
+<button id="showgrid" class="button button--view" aria-label="Show me more">
+	<svg width="100%" height="100%" viewBox="0 0 310 177" preserveAspectRatio="xMidYMid meet">
+		<path fill="#FFFFFF" d="M159.875,174.481L306.945,27.41c2.93-2.929,2.93-7.678,0-10.606L292.803,2.661c-1.406-1.407-3.314-2.197-5.303-2.197c-1.989,0-3.896,0.79-5.303,2.197L154.572,130.287L26.946,2.661c-1.406-1.407-3.314-2.197-5.303-2.197c-1.989,0-3.897,0.79-5.303,2.197L2.197,16.804C0.733,18.269,0,20.188,0,22.107s0.732,3.839,2.197,5.303l147.071,147.071C152.197,177.411,156.945,177.411,159.875,174.481L159.875,174.481z"/>
+	</svg>
+</button>
+<!-- Related demos -->
+<section class="content content--related">
+	<p>If you enjoyed this demo you might also like:</p>
+	<a class="media-item" href="http://tympanus.net/Development/ScatteredPolaroidsGallery/">
+		<img class="media-item__img" src="img/related/ScatteredPolaroidGallery.jpg">
+		<h3 class="media-item__title">Scattered Polaroids Gallery</h3>
+	</a>
+	<a class="media-item" href="http://tympanus.net/Development/ImageGridEffects/">
+		<img class="media-item__img" src="img/related/ImageGridEffects.jpg">
+		<h3 class="media-item__title">Image Grid Effects</h3>
+	</a>
+</section>
+
+</body>
+		
+<script src="/Scripts/app/classie.js"></script>
+		<script src="/Scripts/app/dynamics.min.js"></script>
+		<script src="/Scripts/app/imagesloaded.pkgd.min.js"></script>
+		<script src="/Scripts/app/main.js"></script>

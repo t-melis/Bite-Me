@@ -1,0 +1,59 @@
+﻿@*@model IEnumerable<practicingbiteme2.Models.Order>*@
+@model practicingbiteme2.ViewModels.OrderIndexData
+
+<table class="table">
+    <tr>
+        <th>Order ID</th>
+        <th>Order Date</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Orders)
+    {
+        string selectedRow = "";
+        if (item.OrderID == ViewBag.orderId)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>@Html.DisplayFor(i => item.OrderID)</td>
+            <td>@Html.DisplayFor(i => item.OrderDate)</td>
+            <td>@Html.DisplayFor(i => item.Status)</td>
+            <td>
+                @Html.ActionLink("More Info", "Index", "MyProfile", new { id = item.OrderID }, null) |
+                @Html.ActionLink("Edit", "EditMyOrder", "Order", new { id = item.OrderID }, null)
+            </td>
+        </tr>
+    }
+</table>
+
+@if (Model.OrderProducts != null)
+{
+    <h5>Products</h5>
+    <table class="table">
+        <tr>
+            <th>Product</th>
+            <th>Price(p/i)</th>
+            <th>Quantity</th>
+        </tr>
+        @foreach (var item in Model.OrderProducts)
+        {
+            <tr>
+                <td>@Html.DisplayFor(i => item.Product.Name)</td>
+                <td>@Html.DisplayFor(i => item.Product.Price)</td>
+                <td>@Html.DisplayFor(i => item.Quantity)</td>
+            </tr>
+        }
+        @*<tr>
+            <th>TOTAL</th>
+            <th>price</th>      
+            <th></th>
+        </tr>*@
+    </table>
+}
+
+@if (ViewContext.HttpContext.User.IsInRole("Admin"))
+{
+    @Html.ActionLink("Add new Order", "AddAddress", "DeliveryAddress")
+}

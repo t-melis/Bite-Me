@@ -1,0 +1,40 @@
+﻿@model practicingbiteme2.Models.Cart
+@{
+    ViewBag.Title = "ConfirmOrder";
+}
+
+<h2>Confirm Order</h2>
+
+<h3>Are you sure you want to purchase these items?</h3>
+
+<table class="table">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in Model.CartProducts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @(item.Quantity * item.Product.Price)
+            </td>
+        </tr>
+    }
+    <tr>
+        <td><strong>Total</strong></td>
+        <td></td>
+        <td><strong>@ViewBag.Total</strong></td>
+    </tr>
+</table>
+
+<div>
+    @Html.ActionLink("Back to Cart", "Index") |
+    <input type="button" value="Confirm Order" onclick="location.href='@Url.Action("Create", "Order")'" />
+</div>

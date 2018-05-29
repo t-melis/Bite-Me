@@ -1,0 +1,45 @@
+﻿@model PagedList.IPagedList<practicingbiteme2.Models.Order>
+
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ViewAllOrders";
+}
+
+<h2>All Orders</h2>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>Order ID</th>
+        <th>Order Date</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(i => item.OrderID)</td>
+            <td>@Html.DisplayFor(i => item.OrderDate)</td>
+            <td>@Html.DisplayFor(i => item.Status)</td>
+            <td>@Html.ActionLink("Edit", "EditAllOrders", "Order", new { id = item.OrderID }, null)</td>            
+        </tr>
+    }
+</table>
+
+
+
+
+<div>
+    <div class="page">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+
+
+

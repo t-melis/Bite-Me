@@ -1,0 +1,39 @@
+﻿@model practicingbiteme2.ViewModels.RegisterViewModel
+
+<div>
+    @{
+        ViewBag.Title = "Contact";
+    }
+    <h2>@ViewBag.Title.</h2>
+
+    <address>
+        Phahonyothin 70<br />
+        Pathum Thani, 12130<br />
+        <abbr title="Phone">P:</abbr>
+        +66 85 903 0540
+    </address>
+
+    <address>
+        <strong>Orders & Support:</strong>   <a href="mailto:N_vic@hotmail.com">N_vic@hotmail.com</a><br />
+        <strong>Techincal Issues:</strong> <a href="mailto:bourmpopoulos@gmail.com">bourmpopoulos@gmail.com</a>
+    </address>
+</div>
+
+<br />
+<br />
+<br />
+
+
+@Html.AntiForgeryToken()
+<h4>Write your message</h4>
+<div class="form-group">
+    <br />
+    <strong>First Name</strong><br />
+    @Html.TextBox("First Name")<br />
+    <strong>Email</strong><br />
+    @Html.TextBox("Email")
+</div>
+<div class="col-md-10">
+    @Html.TextArea("Message")<br />    @*βάλε όριο 1000 χαρακτήρων για να στείλει μήνυμα ο χρήστης*@
+    <button id="btn">Send</button>              @*να στέλνει το message στον admin εντός του BiteMe. Ο admin θα έχει τέτοια εφαρμογή στο προφίλ του*@
+</div>

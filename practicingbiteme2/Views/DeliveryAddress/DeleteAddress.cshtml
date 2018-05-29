@@ -1,0 +1,42 @@
+﻿@model practicingbiteme2.Models.DeliveryAddress
+
+@{
+    ViewBag.Title = "DeleteAddress";
+}
+
+<h2>Delete your Address</h2>
+
+<h4>Are you sure you want to delete this?</h4>
+<div>
+    <h4>Address</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        @Html.HiddenFor(model => model.IsDeleted)
+
+        <dt>Receiver Name</dt>
+        <dd>@Html.DisplayFor(i => Model.ReceiverName)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.City)</dt>
+        <dd>@Html.DisplayFor(i => Model.City)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Street)</dt>
+        <dd>@Html.DisplayFor(i => Model.Street)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Number)</dt>
+        <dd>@Html.DisplayFor(i => Model.Number)</dd>
+
+        <dt>Post Code</dt>
+        <dd>@Html.DisplayFor(i => Model.PostCode)</dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> |
+            @Html.ActionLink("Back to My Profile","Index","MyProfile")
+        </div>
+    }
+</div>

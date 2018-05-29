@@ -1,0 +1,23 @@
+﻿@model practicingbiteme2.Models.Order
+
+@{
+    ViewBag.Title = "SelectAddress";
+}
+
+<h2>Select Address</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>@Html.DropDownListFor(model => model.DeliveryAddressID, (SelectList)ViewBag.DeliveryAddresses, new { @class = "form-control"})</div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success"/>
+        </div>
+    </div>
+}
+
+
+

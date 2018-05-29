@@ -1,0 +1,34 @@
+namespace practicingbiteme2.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class ImplementEvent : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.Event",
+                c => new
+                    {
+                        EventId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        EventDate = c.DateTime(nullable: false),
+                        Venue = c.String(),
+                        Details = c.String(),
+                        CustomerID = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.EventId)
+                .ForeignKey("dbo.AspNetUsers", t => t.CustomerID)
+                .Index(t => t.CustomerID);
+            
+        }
+        
+        public override void Down()
+        {
+            DropForeignKey("dbo.Event", "CustomerID", "dbo.AspNetUsers");
+            DropIndex("dbo.Event", new[] { "CustomerID" });
+            DropTable("dbo.Event");
+        }
+    }
+}

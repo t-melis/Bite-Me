@@ -1,0 +1,38 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top" id="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <div class="FourElementsOfNavbar">
+                <ul class="nav navbar-nav">
+                    @*<li class="li">@Html.ActionLink("About", "About", "Home")</li>*@
+                    <li class="li">@Html.ActionLink("Products", "Index", "Product")</li>
+                    <li>
+                        <a href="../Home/Index">
+                            <img src="/Photos/BiteMeLogoRound.png" width="80" height="80">
+                        </a>
+                    </li>
+                    <li class="li">@Html.ActionLink("Events", "Index", "Event")</li>
+                    @*<li class="li">@Html.ActionLink("News", "Index", "News")</li>*@
+                </ul>
+            </div>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+        //$(document).ready(function ()
+        //{
+        //    $("#navbar").hover(function () {              εδώ γράφουμε jQuert για το Navbar
+        //        $("#navbar").fadeOut(1000);
+        //    });
+        //});
+</script>
